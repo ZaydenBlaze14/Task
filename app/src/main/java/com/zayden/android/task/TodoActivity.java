@@ -25,12 +25,12 @@ public class TodoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_todo);
     }
 
-    FloatingActionButton fab = findViewById(R.id.fab1);
-    fab.setOnClickListener(new View.OnClickListener() {
+    FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
         public void onClick(View view) {
             saveTodo();
         }
-    }
+    });
 
     void saveTodo() {
         // first section
