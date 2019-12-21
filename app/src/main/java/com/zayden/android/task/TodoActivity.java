@@ -25,16 +25,9 @@ public class TodoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_todo);
     }
 
-    FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-        public void onClick(View view) {
-            saveTodo();
-        }
-    });
 
     void saveTodo() {
-        // first section
-        // get the data to save in our firebase db
+        //obtain from app
         EditText nameEdtText = (EditText)findViewById(R.id.task_name);
         EditText descEditText = (EditText)findViewById(R.id.task_desc);
         DatePicker datePicker = (DatePicker) findViewById(R.id.datepicker);
@@ -49,8 +42,7 @@ public class TodoActivity extends AppCompatActivity {
 
 
 
-        //second section
-        //save it to the firebase db
+       //save to database db
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         String key = database.getReference("todoList").push().getKey();
 

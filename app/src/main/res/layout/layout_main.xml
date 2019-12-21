@@ -1,32 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#1E1D25">
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_task_home"
-        android:layout_alignParentTop="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="1"
-            android:gravity="center_vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tasks"
-                android:textColor="@color/cardview_light_background"/>
-
-        </LinearLayout>
-    </androidx.appcompat.widget.Toolbar>
 
 
     <com.google.android.material.card.MaterialCardView
@@ -34,11 +12,12 @@
         style="@style/Widget.MaterialComponents.CardView"
         app:cardBackgroundColor="@color/cardview_dark_background"
         android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar_task_home">
+        android:clickable="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:padding="8dp">
 
             <TextView
@@ -48,12 +27,7 @@
                 android:layout_marginLeft="5dp"
                 android:textSize="30dp"
                 android:textAppearance="@color/cardview_dark_background"
-                android:textColor="#000000"/>
-
-
-
-
-
+                android:textColor="#000000" />
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
 
@@ -74,4 +48,4 @@
         app:elevation="6dp"
         app:pressedTranslationZ="12dp" />
 
-</RelativeLayout>
+</LinearLayout>

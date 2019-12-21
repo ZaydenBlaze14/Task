@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,7 +21,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -31,8 +36,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar_task_home);
-        setSupportActionBar(toolbar);
 
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -94,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_todo, parent, false);
+            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_main, parent, false);
             SimpleItemViewHolder pvh = new SimpleItemViewHolder(v);
             return pvh;
         }
@@ -118,7 +121,31 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
+                Intent newIntent = new Intent(MainActivity.this,TodoActivity.class);
+                newIntent.putExtra("todo", todoList.get(position));
+                MainActivity.this.startActivity(newIntent);
 
+                // previous onCreate code
+                if (getIntent().getExtras() != null) {
+                    Bundle extras = getIntent().getExtras();
+                    Todo todo = (Todo)extras.get("todo");
+                    if (todo != null) {
+                        EditText nameEdtText = (EditText)findViewById(R.id.task_name);
+                        EditText messageEditText = (EditText)findViewById(R.id.task_desc);
+                        DatePicker datePicker = (DatePicker) findViewById(R.id.datepicker);
+
+                        nameEdtText.setText(todo.getName());
+                        messageEditText.setText(todo.getMessage());
+
+                        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+                        try {
+                            Date date = format.parse(todo.getDate());
+                            datePicker.updateDate(((Date) date).getYear(), date.getMonth(), date.getDate());
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
             }
         }
     }
