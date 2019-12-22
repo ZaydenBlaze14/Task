@@ -32,18 +32,20 @@
         android:layout_below="@id/toolbar_task_home"
         android:id="@+id/recyclerView"/>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/fab"
-            android:src="@drawable/ic_action_done"
-            android:layout_gravity="bottom|end"
-            app:elevation="6dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_margin="40dp"
-            app:pressedTranslationZ="12dp"
-            android:contentDescription="@string/submit"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="40dp"
+        android:contentDescription="@string/submit"
+        android:src="@drawable/ic_action_add"
+        app:elevation="6dp"
+        app:pressedTranslationZ="12dp" />
+
+
 
 
 

@@ -23,43 +23,52 @@ public class TodoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_todo);
-    }
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View view) {
+            saveTodo();
+        }
+
+             void saveTodo() {
+                //obtain from app
+                EditText nameEdtText = (EditText)findViewById(R.id.task_name);
+                EditText descEditText = (EditText)findViewById(R.id.task_desc);
+                DatePicker datePicker = (DatePicker) findViewById(R.id.datepicker);
+                Date date = new Date();
+                date.setMonth(datePicker.getMonth());
+                date.setYear(datePicker.getYear());
+                date.setDate(datePicker.getDayOfMonth());
+
+                SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+
+                String dateString = format.format(date);
 
 
-    void saveTodo() {
-        //obtain from app
-        EditText nameEdtText = (EditText)findViewById(R.id.task_name);
-        EditText descEditText = (EditText)findViewById(R.id.task_desc);
-        DatePicker datePicker = (DatePicker) findViewById(R.id.datepicker);
-        Date date = new Date();
-        date.setMonth(datePicker.getMonth());
-        date.setYear(datePicker.getYear());
-        date.setDate(datePicker.getDayOfMonth());
 
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+                //save to database db
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                String key = database.getReference("todoList").push().getKey();
 
-        String dateString = format.format(date);
+                Todo todo = new Todo();
+                todo.setName(nameEdtText.getText().toString());
+                todo.setMessage(descEditText.getText().toString());
+                todo.setDate(dateString);
 
-
-
-       //save to database db
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        String key = database.getReference("todoList").push().getKey();
-
-        Todo todo = new Todo();
-        todo.setName(nameEdtText.getText().toString());
-        todo.setMessage(descEditText.getText().toString());
-        todo.setDate(dateString);
-
-        Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put( key, todo.toFirebaseObject());
-        database.getReference("todoList").updateChildren(childUpdates, new DatabaseReference.CompletionListener() {
-            @Override
-            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-                if (databaseError == null) {
-                    finish();
-                }
+                Map<String, Object> childUpdates = new HashMap<>();
+                childUpdates.put( key, todo.toFirebaseObject());
+                database.getReference("todoList").updateChildren(childUpdates, new DatabaseReference.CompletionListener() {
+                    @Override
+                    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                        if (databaseError == null) {
+                            finish();
+                        }
+                    }
+                });
             }
-        });
-    }
-}
+        });}}
+
+
+
+
+
+

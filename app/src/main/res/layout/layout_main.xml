@@ -28,24 +28,11 @@
                 android:textSize="30dp"
                 android:textAppearance="@color/cardview_dark_background"
                 android:textColor="#000000" />
+
+
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="bottom|end"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginBottom="42dp"
-        android:contentDescription="@string/submit"
-        android:src="@drawable/ic_action_add"
-        app:elevation="6dp"
-        app:pressedTranslationZ="12dp" />
+
 
 </LinearLayout>
