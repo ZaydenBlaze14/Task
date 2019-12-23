@@ -34,7 +34,7 @@ public class TodoActivity extends AppCompatActivity {
                 EditText nameEdtText = (EditText)findViewById(R.id.task_name);
                 EditText descEditText = (EditText)findViewById(R.id.task_desc);
                 DatePicker datePicker = (DatePicker) findViewById(R.id.datepicker);
-                Date date = new Date();
+                 Date date = new Date();
                 date.setMonth(datePicker.getMonth());
                 date.setYear(datePicker.getYear());
                 date.setDate(datePicker.getDayOfMonth());

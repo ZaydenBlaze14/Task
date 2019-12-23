@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -44,6 +43,27 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent newIntent = new Intent(MainActivity.this,TodoActivity.class);
                 MainActivity.this.startActivity(newIntent);
+
+                if (getIntent().getExtras() != null) {
+                 Bundle extras = getIntent().getExtras();
+                 Todo todo = (Todo) extras.get("todo");
+                 if (todo != null) {
+                     EditText nameEdtText = findViewById(R.id.task_name);
+                     EditText messageEditText = findViewById(R.id.task_desc);
+                     DatePicker datePicker = findViewById(R.id.datepicker);
+
+                     nameEdtText.setText(todo.getName());
+                     messageEditText.setText(todo.getMessage());
+
+                     SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+                     try {
+                         Date date = format.parse(todo.getDate());
+                         datePicker.updateDate(date.getYear(), date.getMonth(), date.getDate());
+                     } catch (ParseException e) {
+                         e.printStackTrace();
+                     }
+                 }
+             }
             }
         });
 
@@ -70,8 +90,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         todoList.clear();
 
-                        Log.w("TodoApp", "getUser:onCancelled " + dataSnapshot.toString());
-                        Log.w("TodoApp", "count = " + String.valueOf(dataSnapshot.getChildrenCount()) + " values " + dataSnapshot.getKey());
+
                         for (DataSnapshot data : dataSnapshot.getChildren()) {
                             Todo todo = data.getValue(Todo.class);
                             todoList.add(todo);
@@ -124,28 +143,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent newIntent = new Intent(MainActivity.this,TodoActivity.class);
                 newIntent.putExtra("todo", todoList.get(position));
                 MainActivity.this.startActivity(newIntent);
-
-                // previous onCreate code
-                if (getIntent().getExtras() != null) {
-                    Bundle extras = getIntent().getExtras();
-                    Todo todo = (Todo)extras.get("todo");
-                    if (todo != null) {
-                        EditText nameEdtText = (EditText)findViewById(R.id.task_name);
-                        EditText messageEditText = (EditText)findViewById(R.id.task_desc);
-                        DatePicker datePicker = (DatePicker) findViewById(R.id.datepicker);
-
-                        nameEdtText.setText(todo.getName());
-                        messageEditText.setText(todo.getMessage());
-
-                        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-                        try {
-                            Date date = format.parse(todo.getDate());
-                            datePicker.updateDate(((Date) date).getYear(), date.getMonth(), date.getDate());
-                        } catch (ParseException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
             }
         }
     }
