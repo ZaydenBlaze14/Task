@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Peeyush\\AndroidStudioProjects\\Task\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-hy\\values-hy.xml",
+            "outputFile": "C:\\Users\\Peeyush\\AndroidStudioProjects\\Task-master\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-hy\\values-hy.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Peeyush\\.gradle\\caches\\transforms-2\\files-2.1\\eb14ffb8a7871eb8123a30f345d2785d\\jetified-play-services-basement-17.0.0\\res\\values-hy\\values.xml",

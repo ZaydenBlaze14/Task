@@ -12,6 +12,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -27,6 +28,7 @@ public class TodoActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
         public void onClick(View view) {
             saveTodo();
+
         }
 
              void saveTodo() {

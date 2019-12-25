@@ -36,6 +36,26 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if (getIntent().getExtras() != null) {
+            Bundle extras = getIntent().getExtras();
+            Todo todo = (Todo) extras.get("todo");
+            if (todo != null) {
+                EditText nameEdtText = findViewById(R.id.task_name);
+                EditText messageEditText = findViewById(R.id.task_desc);
+                DatePicker datePicker = findViewById(R.id.datepicker);
+
+                nameEdtText.setText(todo.getName());
+                messageEditText.setText(todo.getMessage());
+
+                SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+                try {
+                    Date date = format.parse(todo.getDate());
+                    datePicker.updateDate(date.getYear(), date.getMonth(), date.getDate());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -44,26 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent newIntent = new Intent(MainActivity.this,TodoActivity.class);
                 MainActivity.this.startActivity(newIntent);
 
-                if (getIntent().getExtras() != null) {
-                 Bundle extras = getIntent().getExtras();
-                 Todo todo = (Todo) extras.get("todo");
-                 if (todo != null) {
-                     EditText nameEdtText = findViewById(R.id.task_name);
-                     EditText messageEditText = findViewById(R.id.task_desc);
-                     DatePicker datePicker = findViewById(R.id.datepicker);
 
-                     nameEdtText.setText(todo.getName());
-                     messageEditText.setText(todo.getMessage());
-
-                     SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-                     try {
-                         Date date = format.parse(todo.getDate());
-                         datePicker.updateDate(date.getYear(), date.getMonth(), date.getDate());
-                     } catch (ParseException e) {
-                         e.printStackTrace();
-                     }
-                 }
-             }
             }
         });
 
@@ -127,15 +128,21 @@ public class MainActivity extends AppCompatActivity {
             viewHolder.position = position;
             Todo todo = todoList.get(position);
             ((SimpleItemViewHolder) holder).title.setText(todo.getName());
+            ((SimpleItemViewHolder)holder).desc.setText(todo.getMessage());
+            ((SimpleItemViewHolder)holder).time.setText(todo.getDate());
         }
 
         public final  class SimpleItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
             TextView title;
+            TextView desc;
+            TextView time;
             public int position;
             public SimpleItemViewHolder(View itemView) {
                 super(itemView);
                 itemView.setOnClickListener(this);
                 title = itemView.findViewById(R.id.task_name);
+                desc  =  itemView.findViewById(R.id.task_desc);
+                time  = itemView.findViewById(R.id.task_time);
             }
 
             @Override
@@ -143,6 +150,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent newIntent = new Intent(MainActivity.this,TodoActivity.class);
                 newIntent.putExtra("todo", todoList.get(position));
                 MainActivity.this.startActivity(newIntent);
+
+
             }
         }
     }

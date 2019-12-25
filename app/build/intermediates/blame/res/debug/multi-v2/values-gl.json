@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Peeyush\\AndroidStudioProjects\\Task\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-gl\\values-gl.xml",
+            "outputFile": "C:\\Users\\Peeyush\\AndroidStudioProjects\\Task-master\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-gl\\values-gl.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Peeyush\\.gradle\\caches\\transforms-2\\files-2.1\\2111d963c95cc6e94705fb367f0a0943\\core-1.1.0\\res\\values-gl\\values-gl.xml",
