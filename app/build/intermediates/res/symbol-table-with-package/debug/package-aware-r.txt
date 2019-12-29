@@ -1320,6 +1320,7 @@ id tag_screen_reader_focusable
 id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
+id task_date
 id task_desc
 id task_name
 id task_time
@@ -1333,6 +1334,7 @@ id textinput_counter
 id textinput_error
 id textinput_helper_text
 id time
+id timepicker
 id title
 id titleDividerNoCustom
 id title_template

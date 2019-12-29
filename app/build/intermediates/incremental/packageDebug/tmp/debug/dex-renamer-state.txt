@@ -1,4 +1,7 @@
-#Wed Dec 25 17:12:47 IST 2019
-base.0=C\:\\Users\\Peeyush\\AndroidStudioProjects\\Task-master\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
+#Sun Dec 29 22:27:14 IST 2019
+base.0=C\:\\Users\\Peeyush\\AndroidStudioProjects\\Task\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out\\classes.dex
+path.1=classes.dex
+renamed.1=classes2.dex
 path.0=classes.dex
 renamed.0=classes.dex
+base.1=C\:\\Users\\Peeyush\\AndroidStudioProjects\\Task\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\out\\classes.dex

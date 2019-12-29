@@ -8,6 +8,7 @@ public class Todo implements Serializable {
     private String name;
     private String message;
     private String date;
+    private String time;
 
     public Todo() {
 
@@ -16,9 +17,13 @@ public class Todo implements Serializable {
         return date;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDate(String date) { this.date = date; }
+
+    public String getTime() {
+        return time;
     }
+
+    public void  setTime(String time) {this.time = time;}
 
     public String getName() {
         return name;
@@ -42,6 +47,7 @@ public class Todo implements Serializable {
         todo.put("name", name);
         todo.put("message", message);
         todo.put("date", date);
+        todo.put("time", time);
 
         return todo;
     }

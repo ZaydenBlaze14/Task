@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -35,27 +36,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        if (getIntent().getExtras() != null) {
-            Bundle extras = getIntent().getExtras();
-            Todo todo = (Todo) extras.get("todo");
-            if (todo != null) {
-                EditText nameEdtText = findViewById(R.id.task_name);
-                EditText messageEditText = findViewById(R.id.task_desc);
-                DatePicker datePicker = findViewById(R.id.datepicker);
-
-                nameEdtText.setText(todo.getName());
-                messageEditText.setText(todo.getMessage());
-
-                SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-                try {
-                    Date date = format.parse(todo.getDate());
-                    datePicker.updateDate(date.getYear(), date.getMonth(), date.getDate());
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -129,13 +109,16 @@ public class MainActivity extends AppCompatActivity {
             Todo todo = todoList.get(position);
             ((SimpleItemViewHolder) holder).title.setText(todo.getName());
             ((SimpleItemViewHolder)holder).desc.setText(todo.getMessage());
-            ((SimpleItemViewHolder)holder).time.setText(todo.getDate());
+            ((SimpleItemViewHolder)holder).date.setText(todo.getDate());
+            ((SimpleItemViewHolder)holder).time.setText(todo.getTime());
+
         }
 
         public final  class SimpleItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
             TextView title;
             TextView desc;
             TextView time;
+            TextView date;
             public int position;
             public SimpleItemViewHolder(View itemView) {
                 super(itemView);
@@ -143,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
                 title = itemView.findViewById(R.id.task_name);
                 desc  =  itemView.findViewById(R.id.task_desc);
                 time  = itemView.findViewById(R.id.task_time);
+                date = itemView.findViewById(R.id.task_date);
             }
 
             @Override
