@@ -1294,6 +1294,7 @@ id shortcut
 id showCustom
 id showHome
 id showTitle
+id sign_in
 id smallLabel
 id snackbar_action
 id snackbar_text
@@ -1338,8 +1339,6 @@ id timepicker
 id title
 id titleDividerNoCustom
 id title_template
-id toolbar_task_add
-id toolbar_task_home
 id top
 id topPanel
 id touch_outside

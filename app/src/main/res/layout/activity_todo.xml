@@ -10,32 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_task_add"
-            android:layout_alignParentTop="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1"
-                android:gravity="center_vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="NEW"
-                    android:textColor="@color/cardview_light_background"/>
-
-            </LinearLayout>
-        </androidx.appcompat.widget.Toolbar>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/toolbar_task_add"
             android:layout_centerVertical="true"
             android:layout_marginTop="25dp"
             android:background="#1E1D23"
@@ -85,6 +62,10 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/datepicker"/>
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
             <TimePicker
                 android:id="@+id/timepicker"
                 android:layout_width="wrap_content"
@@ -102,7 +83,8 @@
             app:elevation="6dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_margin="40dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="20dp"
             app:pressedTranslationZ="12dp"
             android:contentDescription="@string/submit"/>
 
