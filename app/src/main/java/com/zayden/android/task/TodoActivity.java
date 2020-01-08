@@ -28,7 +28,6 @@ public class TodoActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
         public void onClick(View view) {
             saveTodo();
-
         }
 
              void saveTodo() {

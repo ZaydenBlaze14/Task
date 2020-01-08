@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="#000015">
 
     <com.google.android.gms.common.SignInButton
         android:layout_width="match_parent"
@@ -12,6 +13,16 @@
         android:background="#000015"
         android:id="@+id/sign_in"
         app:colorScheme="dark"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sign_out"
+        android:layout_margin="3.5dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:text="Sign Out"
+        android:background="#4D0026"
+        />
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -25,8 +36,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
+        android:layout_above="@+id/sign_out"
         android:layout_gravity="bottom|end"
-        android:layout_margin="40dp"
+        android:layout_marginBottom="60dp"
+        android:layout_marginRight="10dp"
         android:contentDescription="@string/submit"
         android:src="@drawable/ic_action_add"
         app:elevation="6dp"
