@@ -31,9 +31,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -58,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == RC_SIGN_IN) {
-
             //Getting the GoogleSignIn Task
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
@@ -72,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,6 +105,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,9 +127,9 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         adapter.notifyDataSetChanged();
-
-        updateUI();
     }
+
+
 
     public void signOut() {
         //firebase sign out
@@ -139,10 +140,17 @@ public class MainActivity extends AppCompatActivity {
         updateUI();
     }
 
+    @Override
+    protected  void onStart() {
+        super.onStart();
+        updateUI();
+    }
+
 
     @Override
     protected void onResume() {
         super.onResume();
+        updateUI();
 
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -210,17 +218,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     private void signIn() {
         //google signin intent
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-
-
         //starting the activity for result
         startActivityForResult(signInIntent, RC_SIGN_IN);
-
         updateUI();
-
     }
 
 
@@ -238,6 +241,9 @@ public class MainActivity extends AppCompatActivity {
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_main, parent, false);
             SimpleItemViewHolder pvh = new SimpleItemViewHolder(v);
             return pvh;
+
+
+
         }
 
         @Override

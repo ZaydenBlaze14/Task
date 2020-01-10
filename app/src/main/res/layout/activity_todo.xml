@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1E1D25">
+    android:background="#000015">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginTop="25dp"
-            android:background="#1E1D23"
+            android:background="#000015"
             android:gravity="center"
             android:orientation="vertical"
             android:paddingLeft="30dp"

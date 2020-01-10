@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#1E1D25">
+    android:background="#000015">
 
 
     <com.google.android.material.card.MaterialCardView
@@ -62,6 +62,7 @@
 
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
+
 
 
 
